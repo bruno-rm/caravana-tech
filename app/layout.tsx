@@ -23,12 +23,13 @@ export default function RootLayout({
       <body>
         <div className="bg-[#dbdda8]">
           <nav className=" flex items-center  bg-[#669a2f] h-15 rounded-br-[50] ">
-            <div className="flex w-1/2 ml-[5%]">
+            <div className="flex w-1/2  ml-[5%]">
               <Image
                 src="/images/logo.png"
-                width={230}
-                height={100}
+                width={640}
+                height={110}
                 alt="logo"
+                className="w-60"
               ></Image>
             </div>
             <div className="flex w-1/2 justify-end mr-15 ">
