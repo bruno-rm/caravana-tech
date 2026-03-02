@@ -33,11 +33,11 @@ export default function Home() {
           className="ml-1 md:ml-0 w-[40%] md:w-[25%]"
         ></Image>
 
-        <h2 className="text-lg/5 md:text-5xl text-[#382255] font-bold font-serif ml-1 mt-2 md:mt-5 md:mr-[35%]">
-          Somos uma equipe dedica a apoiar organizações sem fins lucrativos na
+        <h2 className="text-lg/5 md:text-5xl text-[#382255] font-bold font-serif ml-1 mt-2 md:mt-5 md:mr-[35%] mr-5">
+          Somos uma equipe dedicada a apoiar organizações sem fins lucrativos na
           defesa dos direitos digitais.
         </h2>
-        <h2 className="text-lg/5 mt-1 md:text-3xl text-[#669a2f] font-serif ml-1 md:mt-5 md:mr-[35%]">
+        <h2 className="text-lg/5 mt-1 md:text-3xl text-[#669a2f] font-serif ml-1 md:mt-5 md:mr-[35%] mr-5">
           Oferecemos serviços de pesquisa, apóio técnico e estratégias que
           ajudam a fortalecer a segurança e a atuação de quem trabalha por justiça
           social.
