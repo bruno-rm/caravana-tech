@@ -25,7 +25,7 @@ export default function RootLayout({
           <nav className=" flex items-center  bg-[#669a2f] h-15 rounded-br-[50] ">
             <div className="flex w-1/2  ml-[5%]">
               <Image
-                src="/images/logo.png"
+                src="/images/logo-640-110.png"
                 width={640}
                 height={110}
                 alt="logo"
