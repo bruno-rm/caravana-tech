@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: "a serviço dos direitos digitais",
 };
 
-
+//"bg-gradient-to-b from-[#dbdda8] via-[#669a2f] to-[#48773a]"
 
 export default function RootLayout({
   children,
