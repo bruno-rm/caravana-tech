@@ -83,7 +83,7 @@ export default async function PostsTable({ section }: { section: string }) {
             ))
           : (
           <ul>
-            <li colSpan={4} className="text-center text-gray-500 py-6 italic">
+            <li  className="text-center text-gray-500 py-6 italic">
               No data available
             </li>
           </ul>
