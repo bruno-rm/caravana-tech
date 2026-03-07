@@ -1,6 +1,5 @@
 import Image from "next/image";
-// import Card from "@/components/cards";
-import PostsTable from "@/components/posts-table";
+import Posts from "@/components/posts";
 
 export default function Home() {
   return (
@@ -46,40 +45,12 @@ export default function Home() {
           </h2>
         </div>
       </div>
+    
 
-      <div className="">
-        <PostsTable section={"news"}/> 
+      <div>
+        <Posts/>
       </div>
 
-      {/* <div className="grid grid-cols-1 lg:grid-cols-3 md:mt-30 md:ml-12 md:mr-12">
-        <div>
-           <Card
-          title="Título"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          imageUrl="/images/desktop.jpg"
-        />
-        </div>
-
-        <div>
-           <Card
-          title="Título"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          imageUrl="/images/desktop.jpg"
-        />
-        </div>
-
-        <div>
-           <Card
-          title="Título"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          imageUrl="/images/desktop.jpg"
-        />
-        </div>
-
-               
-      </div> */}
-
-      
       
     </div>
   );
