@@ -44,8 +44,7 @@ export default function Home() {
             justiça social.
           </h2>
         </div>
-      </div>
-    
+      </div>    
 
       <div>
         <Posts/>

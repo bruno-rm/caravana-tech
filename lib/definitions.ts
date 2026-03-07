@@ -28,6 +28,12 @@ export type User = {
   password: string;
 };
 
+export type PostProps = {
+  title: string;
+  image: string;
+  content: string;
+};
+
 
 export const signupSchema = z.object({
   name: z

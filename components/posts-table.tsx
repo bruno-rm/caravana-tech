@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PostProps } from "@/lib/definitions";
 
 // function getFirstThreeWords(paragraph: string) {
 //   if (!paragraph || typeof paragraph !== "string") {
@@ -16,11 +17,7 @@ import Image from "next/image";
 //   return "";
 // }
 
-type PostProps = {
-  title: string;
-  image: string;
-  content: string;
-};
+
 
 export default function PostsTable({ title, image, content }: PostProps) {
   return (
