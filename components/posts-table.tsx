@@ -19,7 +19,7 @@ import { PostProps } from "@/lib/definitions";
 
 
 
-export default function PostsTable({ title, image, content }: PostProps) {
+export default function PostsTable({ title, image, description }: PostProps) {
   return (
     <>
       <div className=" p-6 w-full">
@@ -41,7 +41,7 @@ export default function PostsTable({ title, image, content }: PostProps) {
           </div>
 
           <div className="mt-2">
-            <p className="text-[#382255] text-xl ">{content}</p>
+            <p className="text-[#382255] text-xl ">{description}</p>
           </div>
         </div>
       </div>

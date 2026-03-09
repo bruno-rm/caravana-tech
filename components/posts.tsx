@@ -2,7 +2,7 @@ import { listPosts } from "@/lib/data";
 import PostsTable from "./posts-table";
 
 export default async function Posts() {
-  const data = await listPosts("news");
+  const data = await listPosts("notícias");
 
   return (
     <>
@@ -12,8 +12,9 @@ export default async function Posts() {
             <div key={index}>
               <PostsTable
                 title={item.title}
-                content={item.content}
+                description={item.description}
                 image={item.image}
+                content={item.content}
               />
             </div>
           ))
