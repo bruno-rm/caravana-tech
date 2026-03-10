@@ -1,18 +1,17 @@
 "use client";
 
 import { createPost } from "@/lib/actions";
-import { useState } from "react";
-
 
 //section, title, author, content
 
 export default function Form() {
-  const handleSubmit = async (formData: FormData) => {
-    await createPost(formData);
-  };
-
   return (
-    <form action={handleSubmit} className="bg-black p-6  w-full space-y-4 ">
+    <form
+      action={async (formData) => {
+        await createPost(formData);
+      }}
+      className="bg-black p-6  w-full space-y-4 "
+    >
       <div>
         <label className="block text-sm text-[#b4b4b4] font-semibold mb-1">
           Título
@@ -128,10 +127,6 @@ export default function Form() {
           Enviar post
         </button>
       </div>
-
-      
-      
-      
     </form>
   );
 }
