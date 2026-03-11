@@ -73,7 +73,6 @@ export async function createPost(
     };
   }
 
-  console.log(title);
 
   revalidatePath("/criar-post");
   redirect("/criar-post");
