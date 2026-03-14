@@ -4,6 +4,9 @@ import "./globals.css";
 import Image from "next/image";
 import { MdEmail } from "react-icons/md";
 
+import "@uploadthing/react/styles.css";
+
+
 // import Link from "next/link";
 
 export const metadata: Metadata = {

@@ -1,60 +1,40 @@
+"use client";
 
-import { uploadImage } from "@/lib/actions";
-
+import { UploadButton } from "@/utils/uploadthing";
+import { useState } from "react";
+import Image from "next/image";
+import { DivideIcon } from "@heroicons/react/24/outline";
 
 export default function Page() {
+const [imageUrl, setImageUrl] = useState<string>("")
+const [imageName, setImageName] =useState<string>("")
 
   return (
-    <main className="p-10 flex justify-center">
-      <form
-        action={uploadImage}
-        className="flex flex-col gap-4 max-w-md"
-      >
-        <input
-          type="file"
-          name="image"
-          className="border p-2 rounded"
-        />
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <UploadButton
+        endpoint="imageUploader"
+        onClientUploadComplete={(res) => {
+          // Do something with the response
+          console.log("Files: ", res);
+          console.log("presignedUrl:, ", res[0].key);
 
-        <button
-          type="submit"
-          className="bg-blue-600 text-white p-2 rounded"
-        >
-          Upload Image
-        </button>
-      </form>
+          setImageUrl(res[0].url);
+          setImageName(res[0].name)
+
+          alert("Upload Completed");
+        }}
+        onUploadError={(error: Error) => {
+          // Do something with the error.
+          alert(`ERROR! ${error.message}`);
+        }}
+      />
+
+      {imageUrl.length ? <div>
+        <Image src={imageUrl} alt={imageName} width={500} height={500}/>
+
+      </div> : null }
     </main>
   );
 }
 
-// import Image from "next/image";
-// import fs from "node:fs/promises";
 
-// import UploadForm from "@/components/upload";
-
-// export default async function Page() {
-//   const files = await fs.readdir("./public/images");
-//   const images = files
-//     .filter((file) => file.endsWith(".png"))
-//     .map((file) => `/images/${file}`);
-
-//   return (
-//     <main>
-//       <UploadForm />
-//       <div className="flex flex-wrap">
-//         {images.map((image) => (
-//           <div key={image} className="px-2 h-auto w-1/2">
-//             <Image
-//               key={image}
-//               src={image}
-//               width={400}
-//               height={400}
-//               alt={image}
-//               className="object-cover w-full"
-//             />
-//           </div>
-//         ))}
-//       </div>
-//     </main>
-//   );
-// }
