@@ -101,9 +101,11 @@ export async function uploadImage(formData: FormData) {
 
   await writeFile(filePath, buffer);
 
-  // return { success: true };
+  return
 
-  // redirect("/");
+  //return { success: true };
+
+  //redirect("/");
 }
 
 
