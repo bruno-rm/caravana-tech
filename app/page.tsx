@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Posts from "@/components/posts";
-import ServerUploadPage from "@/components/upload-form";
 
 export default function Home() {
   return (
@@ -51,9 +50,7 @@ export default function Home() {
         <Posts />
       </div>
 
-      <div>
-        <ServerUploadPage />
-      </div>
+      
     </div>
   );
 }

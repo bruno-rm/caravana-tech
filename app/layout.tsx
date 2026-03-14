@@ -4,7 +4,7 @@ import "./globals.css";
 import Image from "next/image";
 import { MdEmail } from "react-icons/md";
 
-import Link from "next/link";
+// import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "caravana.tech",
