@@ -59,7 +59,6 @@ export async function createPost(
 
   const data = parse.data;
 
-  
   try {
     await sql`
       INSERT INTO posts (section, title, author, content, description, image, slug)
@@ -73,25 +72,65 @@ export async function createPost(
     };
   }
 
-
   revalidatePath("/criar-post");
   redirect("/criar-post");
 }
 
 
-import fs from "node:fs/promises";
 
-export async function uploadFile(formData: FormData) {
-  const file = formData.get("file") as File;
-  const arrayBuffer = await file.arrayBuffer();
-  const buffer = new Uint8Array(arrayBuffer);
+import { writeFile } from "fs/promises";
+import path from "path";
 
-  await fs.writeFile(`./public/images/${file.name}`, buffer);
+export async function uploadImage(formData: FormData) {
+  const file = formData.get("image") as File;
 
-  revalidatePath("/");
+  if (!file || file.size === 0) {
+    throw new Error("No file uploaded");
+  }
+
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
+
+  const filename = Date.now() + "-" + file.name;
+
+  const filePath = path.join(
+    process.cwd(),
+    "public/uploads",
+    filename
+  );
+
+  await writeFile(filePath, buffer);
+
+  // return { success: true };
+
+  // redirect("/");
 }
 
 
+// import fs from "node:fs/promises";
+
+// export async function uploadFile(
+//   prevState: {
+//     message: string | undefined;
+//   },
+//   formData: FormData,
+// ) {
+//   const file = formData.get("file") as File;
+//   const arrayBuffer = await file.arrayBuffer();
+//   const buffer = new Uint8Array(arrayBuffer);  
+
+//   try {
+//     await fs.writeFile(`./public/images/${file.name}`, buffer);
+    
+//   } catch (error) {
+//      console.error(error);
+//      return {
+//       message: "Database Error: Failed to upload.",
+//     };
+//   }
+
+//   revalidatePath("/");
+// }
 
 // "use server";
 
