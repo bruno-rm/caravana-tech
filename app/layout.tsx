@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
 import Image from "next/image";
 import { MdEmail } from "react-icons/md";
-
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { ourFileRouter } from "@/app/api/uploadthing/core";
 import "@uploadthing/react/styles.css";
 
 
@@ -24,11 +25,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        {/* componente do uploadThing para eliminar o carregamento do botão de upload */}
+        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         <div className="bg-[#dbdda8]">
           <nav className=" flex items-center  bg-[#669a2f] h-15 rounded-br-[50] ">
             <div className="flex w-1/2  ml-[5%]">
               <Image
                 src="/images/logo-640-110.png"
+                priority={true}
                 width={640}
                 height={110}
                 alt="logo"

@@ -14,8 +14,8 @@ export async function listPosts(section: string) {
     WHERE posts.section = ${section}
     ORDER BY posts.created_at DESC;
   `;
-
-	return data;
+console.log(data)
+	return data; 
 }
 
 
@@ -29,6 +29,7 @@ export async function fetchPostBySlug(slug: string) {
     const post = data.map((post) => ({
       ...post,            
     }));
+    
     
     return post[0];
   } catch (error) {

@@ -32,7 +32,7 @@ export default function PostsTable({ title, image, description }: PostProps) {
 
           <div>
             <Image
-              src={`/images/${image}`}
+              src={image}
               alt={title}
               width={960}
               height={640}

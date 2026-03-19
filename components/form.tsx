@@ -2,6 +2,9 @@
 
 import { createPost } from "@/lib/actions";
 import { useActionState } from "react";
+import { UploadButton } from "@/utils/uploadthing";
+import Image from "next/image";
+import { useState } from "react";
 
 //section, title, author, content
 
@@ -11,11 +14,11 @@ const initialState = {
 
 export default function Form() {
   const [state, formAction] = useActionState(createPost, initialState);
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [imageName, setImageName] = useState<string>("");
+
   return (
-    <form
-      action={formAction}
-      className="bg-black p-6  w-full space-y-4 "
-    >
+    <form action={formAction} className="bg-black p-6  w-full space-y-4 ">
       <div>
         <label className="block text-sm text-[#b4b4b4] font-semibold mb-1">
           Título
@@ -102,11 +105,41 @@ export default function Form() {
           </label>
           <input
             type="text"
-            name="image"
+            name="imageName"
             required
             className="field-sizing-content w-full border  bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
-            placeholder="Insira o nome da imagem"
+            placeholder={imageName}
           />
+        </div>
+
+        <div className="flex min-h-screen flex-col items-center justify-between p-24">
+          <UploadButton
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => {
+              // Do something with the response
+              console.log("Files: ", res);
+              console.log("presignedUrl: ", res[0].ufsUrl);
+
+              setImageUrl(res[0].ufsUrl);
+              setImageName(res[0].name);
+
+              alert("Upload Completed");
+            }}
+            onUploadError={(error: Error) => {
+              // Do something with the error.
+              alert(`ERROR! ${error.message}`);
+            }}
+          />
+
+          {imageUrl.length ? (
+            <div>
+              <Image src={imageUrl} alt={imageName} width={500} height={500} />
+            </div>
+          ) : null}
+        </div>
+
+        <div>
+          <input type="hidden" name="imageUrl" value={imageUrl} />
         </div>
 
         <div className="flex-1">
@@ -134,9 +167,6 @@ export default function Form() {
     </form>
   );
 }
-
-
-
 
 // "use client";
 

@@ -16,7 +16,8 @@ export type Post = {
   author: string;
   content: string;
   description: string;
-  image: string;
+  image_name: string;
+  image_url: string; 
   slug: string;
   created_at: Date;
 };

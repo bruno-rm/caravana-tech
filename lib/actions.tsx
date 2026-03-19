@@ -40,16 +40,18 @@ export async function createPost(
     author: z.string(),
     content: z.string(),
     description: z.string(),
-    image: z.string(),
+    imageName: z.string(),
+    imageUrl: z.string(),
     slug: z.string(),
   });
   const parse = schema.safeParse({
     title: formData.get("title"),
     section: formData.get("section"),
-    author: formData.get("author"),
+    author: formData.get("author"), 
     content: formData.get("content"),
     description: formData.get("content"),
-    image: formData.get("image"),
+    imageName: formData.get("imageName"),
+    imageUrl: formData.get("imageUrl"),
     slug: formData.get("slug"),
   });
 
@@ -61,8 +63,8 @@ export async function createPost(
 
   try {
     await sql`
-      INSERT INTO posts (section, title, author, content, description, image, slug)
-        VALUES (${data.section}, ${data.title}, ${data.author}, ${data.content}, ${data.description}, ${data.image}, ${data.slug})
+      INSERT INTO posts (section, title, author, content, description, image_name, image_url, slug)
+        VALUES (${data.section}, ${data.title}, ${data.author}, ${data.content}, ${data.description}, ${data.imageName}, ${data.imageUrl}, ${data.slug})
     `;
   } catch (error) {
     // We'll also log the error to the console for now
