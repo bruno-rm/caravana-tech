@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 export default function LoginPage() {
   return (
-    <main className="flex items-center justify-center p-15 bg-black">
+    <main className="flex justify-center h-screen items-center">
               
         <Suspense>
           <LoginForm />

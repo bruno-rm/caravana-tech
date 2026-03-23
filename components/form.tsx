@@ -56,7 +56,7 @@ export default function Form() {
           name="description"
           required
           className="field-sizing-content w-full border  bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
-          placeholder="Insira uma descrição"
+          placeholder="Descreva brevemente o conteúdo do post"
         />
       </div>
 
@@ -96,20 +96,34 @@ export default function Form() {
             <option value="artigos">Artigos</option>
           </select>
         </div>
+
+        <div className="flex-1">
+          <label
+            htmlFor="category"
+            className="block text-sm text-[#b4b4b4] font-semibold mb-1"
+          >
+            Idioma
+          </label>
+
+          <select
+            defaultValue=""
+            name="language"
+            required
+            className="field-sizing-content w-full border  bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
+          >
+            <option value="" disabled hidden>
+              O post está em qual idioma?
+            </option>
+            <option value="pt">Português</option>
+            <option value="en">Inglês</option>
+            <option value="es">Espanhol</option>
+          </select>
+        </div>
       </div>
 
       <div className="flex space-x-4">
-        <div className="flex-1">
-          <label className="block text-sm text-[#b4b4b4] font-semibold mb-1">
-            Imagem
-          </label>
-          <input
-            type="text"
-            name="imageName"
-            required
-            className="field-sizing-content w-full border  bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
-            placeholder={imageName}
-          />
+        <div>
+          <input type="hidden" name="imageName" value={imageName} />
         </div>
 
         <div className="flex min-h-screen flex-col items-center justify-between p-24">

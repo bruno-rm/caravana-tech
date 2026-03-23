@@ -24,14 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-[#dbdda8]">
         {/* componente do uploadThing para eliminar o carregamento do botão de upload */}
         <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         <div className="bg-[#dbdda8]">
           <nav className=" flex items-center  bg-[#669a2f] h-15 rounded-br-[50] ">
             <div className="flex w-1/2  ml-[5%]">
               <Image
-                src="/images/logo-640-110.png"
+                src="/images/logo-640-110.svg"
                 priority={true}
                 width={640}
                 height={110}
@@ -43,9 +43,10 @@ export default function RootLayout({
               <MdEmail className="text-[#dbdda8] text-4xl " />
             </div>
           </nav>
+          </div>
 
-          {children}
-        </div>
+          <main className="bg-[#dbdda8]">{children}</main>
+        
       </body>
     </html>
   );

@@ -37,6 +37,7 @@ export async function createPost(
   const schema = z.object({
     title: z.string(),
     section: z.string(),
+    language: z.string(),
     author: z.string(),
     content: z.string(),
     description: z.string(),
@@ -47,6 +48,7 @@ export async function createPost(
   const parse = schema.safeParse({
     title: formData.get("title"),
     section: formData.get("section"),
+    language: formData.get("language"),
     author: formData.get("author"), 
     content: formData.get("content"),
     description: formData.get("content"),
@@ -63,8 +65,8 @@ export async function createPost(
 
   try {
     await sql`
-      INSERT INTO posts (section, title, author, content, description, image_name, image_url, slug)
-        VALUES (${data.section}, ${data.title}, ${data.author}, ${data.content}, ${data.description}, ${data.imageName}, ${data.imageUrl}, ${data.slug})
+      INSERT INTO posts (section, language, title, author, content, description, image_name, image_url, slug)
+        VALUES (${data.section}, ${data.language}, ${data.title}, ${data.author}, ${data.content}, ${data.description}, ${data.imageName}, ${data.imageUrl}, ${data.slug})
     `;
   } catch (error) {
     // We'll also log the error to the console for now

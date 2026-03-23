@@ -4,7 +4,7 @@ import Posts from "@/components/posts";
 export default function Home() {
   return (
     <div>
-      <div className="p-10 md:mt-15 md:ml-[55%] text-left font-serif md:mb-[-50]">
+      <div className="p-10 md:pt-30 md:ml-[55%] text-left font-serif md:mb-[-50]">
         <h1 className="text-4xl md:text-6xl text-[#382255] font-bold ">
           Tecnologia e pesquisa,
         </h1>
@@ -27,7 +27,7 @@ export default function Home() {
 
       <div className="ml-5 md:mt-[-60] md:ml-20">
         <Image
-          src="/images/logo-2700-1132.png"
+          src="/images/logo-2700-1132.svg"
           width={2700}
           height={1132}
           alt="logo"
