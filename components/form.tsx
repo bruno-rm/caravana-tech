@@ -18,22 +18,22 @@ export default function Form() {
   const [imageName, setImageName] = useState<string>("");
 
   return (
-    <form action={formAction} className="bg-black p-6  w-full space-y-4 ">
+    <form action={formAction} className="  w-full space-y-4 ">
       <div>
-        <label className="block text-sm text-[#b4b4b4] font-semibold mb-1">
+        <label className="block text-sm text-[#48773a] font-semibold mb-1">
           Título
         </label>
         <input
           type="text"
           name="title"
           required
-          className="w-full border bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
+          className="w-full border bg-white border-[#48773a]  p-2 focus:ring-1 focus:ring-[#48773a] focus:outline-none"
           placeholder="Insira um título"
         />
       </div>
 
       <div>
-        <label className="block text-sm text-[#b4b4b4] font-semibold mb-1">
+        <label className="block text-sm text-[#48773a] font-semibold mb-1">
           Conteúdo
         </label>
         <textarea
@@ -41,13 +41,13 @@ export default function Form() {
           cols={50}
           name="content"
           required
-          className="field-sizing-content w-full border  bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
+          className="field-sizing-content w-full border  bg-white border-[#48773a]  p-2 focus:ring-1 focus:ring-[#48773a] focus:outline-none"
           placeholder="Insira o conteúdo do post"
         />
       </div>
 
       <div>
-        <label className="block text-sm text-[#b4b4b4] font-semibold mb-1">
+        <label className="block text-sm text-[#48773a] font-semibold mb-1">
           Descrição
         </label>
         <textarea
@@ -55,29 +55,29 @@ export default function Form() {
           cols={50}
           name="description"
           required
-          className="field-sizing-content w-full border  bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
+          className="field-sizing-content w-full border  bg-white border-[#48773a]  p-2 focus:ring-1 focus:ring-[#48773a] focus:outline-none"
           placeholder="Descreva brevemente o conteúdo do post"
         />
       </div>
 
       <div className="flex space-x-4">
         <div className="flex-1">
-          <label className="block text-sm text-[#b4b4b4] font-semibold mb-1">
-            Autor
+          <label className="block text-sm text-[#48773a] font-semibold mb-1">
+            Autor(a)
           </label>
           <input
             type="text"
             name="author"
             required
-            className="field-sizing-content w-full border  bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
-            placeholder="Insira o nome do autor"
+            className="field-sizing-content w-full border  bg-white border-[#48773a]  p-2 focus:ring-1 focus:ring-[#48773a] focus:outline-none"
+            placeholder="De quem é a autoria?"
           />
         </div>
 
         <div className="flex-1">
           <label
             htmlFor="category"
-            className="block text-sm text-[#b4b4b4] font-semibold mb-1"
+            className="block text-sm text-[#48773a] font-semibold mb-1"
           >
             Seção
           </label>
@@ -86,7 +86,7 @@ export default function Form() {
             defaultValue=""
             name="section"
             required
-            className="field-sizing-content w-full border  bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
+            className="field-sizing-content w-full border  bg-white border-[#48773a]  p-2 focus:ring-1 focus:ring-[#48773a] focus:outline-none"
           >
             <option value="" disabled hidden>
               Escolha uma seção:
@@ -100,7 +100,7 @@ export default function Form() {
         <div className="flex-1">
           <label
             htmlFor="category"
-            className="block text-sm text-[#b4b4b4] font-semibold mb-1"
+            className="block text-sm text-[#48773a] font-semibold mb-1"
           >
             Idioma
           </label>
@@ -109,7 +109,7 @@ export default function Form() {
             defaultValue=""
             name="language"
             required
-            className="field-sizing-content w-full border  bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
+            className="field-sizing-content w-full border  bg-white border-[#48773a]  p-2 focus:ring-1 focus:ring-[#48773a] focus:outline-none"
           >
             <option value="" disabled hidden>
               O post está em qual idioma?
@@ -121,12 +121,26 @@ export default function Form() {
         </div>
       </div>
 
-      <div className="flex space-x-4">
+      <div className="flex-1">
+          <label className="block text-sm text-[#48773a] font-semibold mb-1">
+            Slug
+          </label>
+          <input
+            type="text"
+            name="slug"
+            required
+            className="field-sizing-content w-full border  bg-white border-[#48773a]  p-2 focus:ring-1 focus:ring-[#48773a] focus:outline-none"
+            placeholder="Crie um slug para o post do tipo: nome-do-post"
+          />
+        </div>
+
+      <div className=" ">
         <div>
           <input type="hidden" name="imageName" value={imageName} />
         </div>
 
-        <div className="flex min-h-screen flex-col items-center justify-between p-24">
+        <div className="flex  flex-col items-center justify-between p-6">
+          <p className="pb-2">Escolha um arquivo de imagem de até 4 MB</p>
           <UploadButton
             endpoint="imageUploader"
             onClientUploadComplete={(res) => {
@@ -156,24 +170,13 @@ export default function Form() {
           <input type="hidden" name="imageUrl" value={imageUrl} />
         </div>
 
-        <div className="flex-1">
-          <label className="block text-sm text-[#b4b4b4] font-semibold mb-1">
-            Slug
-          </label>
-          <input
-            type="text"
-            name="slug"
-            required
-            className="field-sizing-content w-full border  bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
-            placeholder="Crie um slug de identificação para o post"
-          />
-        </div>
+        
       </div>
 
       <div className="flex justify-center p-6">
         <button
           type="submit"
-          className="w-40 cursor-pointer bg-[#353535] hover:text-[#b4b4b4]  text-white font-medium py-2  transition"
+          className="w-40 cursor-pointer bg-[#669a2f] hover:bg-[#48773a] rounded-md text-white font-medium py-2  transition"
         >
           Enviar post
         </button>
@@ -197,14 +200,14 @@ export default function Form() {
 //       className="bg-black p-6  w-full space-y-4 "
 //     >
 //       <div>
-//         <label className="block text-sm text-[#b4b4b4] font-semibold mb-1">
+//         <label className="block text-sm text-[#48773a] font-semibold mb-1">
 //           Título
 //         </label>
 //         <input
 //           type="text"
 //           name="title"
 //           required
-//           className="w-full border bg-white border-[#b4b4b4]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
+//           className="w-full border bg-white border-[#48773a]  p-2 focus:ring-1 focus:ring-[#b4b4b4] focus:outline-none"
 //           placeholder="Insira um título"
 //         />
 //       </div>
