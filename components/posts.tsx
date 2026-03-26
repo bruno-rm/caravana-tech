@@ -6,15 +6,16 @@ export default async function Posts() {
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-3 md:mt-30 md:ml-12 md:mr-12">
+      <div className="grid grid-cols-1 lg:grid-cols-3  md:ml-12 md:mr-12">
         {data.length > 0 ? (
           data.map((item, index) => (
             <div key={index}>
-              <PostsTable
+              <PostsTable 
                 title={item.title}
                 description={item.description}
                 image={item.image_url}
                 content={item.content}
+                slug={item.slug}
               />
             </div>
           ))

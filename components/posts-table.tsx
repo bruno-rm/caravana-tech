@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PostProps } from "@/lib/definitions";
+import Link from "next/link";
 
 // function getFirstThreeWords(paragraph: string) {
 //   if (!paragraph || typeof paragraph !== "string") {
@@ -17,12 +18,13 @@ import { PostProps } from "@/lib/definitions";
 //   return "";
 // }
 
+ 
 
-
-export default function PostsTable({ title, image, description }: PostProps) {
+export default function PostsTable({ title, image, description, slug }: PostProps) {
   return (
     <>
       <div className=" p-6 w-full">
+        <Link href={`/posts/${slug}`}>
         <div>
           <div>
             <h2 className="text-2xl text-[#48773a] font-bold mb-3 font-serif">
@@ -41,9 +43,10 @@ export default function PostsTable({ title, image, description }: PostProps) {
           </div>
 
           <div className="mt-2">
-            <p className="text-[#382255] text-xl ">{description}</p>
+            <p className="text-[#382255] text-xl" style={{ whiteSpace: "pre-wrap" }}>{description}</p>
           </div>
         </div>
+        </Link>
       </div>
     </>
   );

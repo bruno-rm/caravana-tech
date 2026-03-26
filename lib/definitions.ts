@@ -34,6 +34,7 @@ export type PostProps = {
   image: string;
   description: string;
   content: string;
+  slug: string;
 };
 
 export const signupSchema = z.object({

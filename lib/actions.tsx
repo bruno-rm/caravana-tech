@@ -51,7 +51,7 @@ export async function createPost(
     language: formData.get("language"),
     author: formData.get("author"), 
     content: formData.get("content"),
-    description: formData.get("content"),
+    description: formData.get("description"),
     imageName: formData.get("imageName"),
     imageUrl: formData.get("imageUrl"),
     slug: formData.get("slug"),
