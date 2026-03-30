@@ -20,6 +20,7 @@ export type Post = {
   image_url: string; 
   slug: string;
   created_at: Date;
+  media_link: string;
 };
 
 export type User = {

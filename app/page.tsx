@@ -47,7 +47,7 @@ export default function Home() {
       </div>
 
       <div>
-        <h2 className="text-3xl pt-10 text-center md:text-5xl md:pb-15 md:pt-15 text-[#382255] font-bold  ">Novidades</h2>
+        <h2 className="text-3xl pt-10 text-center md:text-5xl md:pb-15 md:pt-15 text-[#382255] font-bold  ">Notícias</h2>
         <Posts />
       </div>
 
