@@ -1,6 +1,6 @@
 import { listPosts } from "@/lib/data";
 import PostsTable from "./posts-table";
-
+ 
 export default async function Posts() {
   const data = await listPosts("notícias"); 
 

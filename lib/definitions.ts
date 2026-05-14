@@ -8,7 +8,7 @@ export type Expenses = {
   month: number;
   created_at: Date;
 };
-
+ 
 export type Post = {
   id: number;
   section: string;

@@ -8,7 +8,7 @@ import { signIn } from "@/auth";
 import z from "zod";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require", prepare: false });
-
+ 
 export async function authenticate(
   prevState: string | undefined,
   formData: FormData,
@@ -44,6 +44,7 @@ export async function createPost(
     imageName: z.string(),
     imageUrl: z.string(),
     slug: z.string(),
+    mediaLink: z.string(),
   });
   const parse = schema.safeParse({
     title: formData.get("title"),
@@ -55,6 +56,7 @@ export async function createPost(
     imageName: formData.get("imageName"),
     imageUrl: formData.get("imageUrl"),
     slug: formData.get("slug"),
+    mediaLink: formData.get("mediaLink"),
   });
 
   if (!parse.success) {
@@ -65,8 +67,8 @@ export async function createPost(
 
   try {
     await sql`
-      INSERT INTO posts (section, language, title, author, content, description, image_name, image_url, slug)
-        VALUES (${data.section}, ${data.language}, ${data.title}, ${data.author}, ${data.content}, ${data.description}, ${data.imageName}, ${data.imageUrl}, ${data.slug})
+      INSERT INTO posts (section, language, title, author, content, description, image_name, image_url, slug, media_link)
+        VALUES (${data.section}, ${data.language}, ${data.title}, ${data.author}, ${data.content}, ${data.description}, ${data.imageName}, ${data.imageUrl}, ${data.slug}, ${data.mediaLink})
     `;
   } catch (error) {
     // We'll also log the error to the console for now
@@ -80,5 +82,5 @@ export async function createPost(
   redirect("/criar-post");
 }
 
-
+ 
 

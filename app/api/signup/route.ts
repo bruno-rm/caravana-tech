@@ -4,7 +4,7 @@ import { signupSchema } from "@/lib/definitions";
 import postgres from "postgres";
 import z from "zod";
 
-
+ 
 
 const sql = postgres(process.env.POSTGRES_URL!, {
   prepare: false,

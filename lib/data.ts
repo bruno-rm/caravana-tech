@@ -10,14 +10,14 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require', prepare: false
 export async function listPosts(section: string) {
  
 	const data = await sql<Post[]>`
-    SELECT * FROM posts
+    SELECT * FROM Posts
     WHERE posts.section = ${section}
     ORDER BY posts.created_at DESC;
   `;
 console.log(data)
 	return data; 
 }
-
+ 
 
 export async function fetchPostBySlug(slug: string) {
   try {
