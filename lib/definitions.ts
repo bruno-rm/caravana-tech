@@ -23,6 +23,13 @@ export type Post = {
   media_link: string;
 };
 
+export type TiptapPost = {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: Date;
+};
+
 export type User = {
   id: string;
   name: string;
