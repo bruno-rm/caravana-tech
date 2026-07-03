@@ -12,7 +12,8 @@ import {
   type Editor,
   type NodeWithPos,
 } from "@tiptap/react";
-import { uploadFiles } from "./uploadthing"
+import { uploadFiles } from "./uploadthing";
+
 
 export const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
@@ -380,6 +381,8 @@ export const handleImageUpload = async (
   if (abortSignal?.aborted) throw new Error("Upload cancelled");
 
   try {
+    
+
     const uploaded = await uploadFiles("imageUploader", {
       files: [file],
       onUploadProgress: ({ progress }) => onProgress?.({ progress }),

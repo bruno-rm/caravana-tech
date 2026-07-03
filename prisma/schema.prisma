@@ -10,8 +10,16 @@ datasource db {
 model RichTextPost {
   id        String   @id @default(cuid())
   title     String
+  description String?
+  author    String?
+  section   String
+  language  String
+  slug      String  @unique
+  imageUrl  String?
+  mediaLink String?
   content   String   @db.Text
   createdAt DateTime @default(now())
 }
 
+ 
  

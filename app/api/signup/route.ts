@@ -6,11 +6,11 @@ import z from "zod";
 
  
 
-const sql = postgres(process.env.POSTGRES_URL!, {
+const sql = postgres(process.env.NON_PRISMA_DATABASE!, {
   prepare: false,
   ssl: "require",
 });
-
+ 
 export async function POST(req: Request) {
   try {
     const body = await req.json();

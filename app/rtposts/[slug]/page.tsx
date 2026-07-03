@@ -7,14 +7,14 @@ import { notFound } from "next/navigation";
 export default async function PostPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { id } = await params;
+  const { slug } = await params;
 
-  if (!id) return <div>Invalid post ID</div>;
+  if (!slug) return <div>Invalid post ID</div>;
 
   const post = await prisma.richTextPost.findUnique({
-    where: { id },
+    where: { slug },
   });
   if (!post) notFound();
 

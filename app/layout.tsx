@@ -8,6 +8,7 @@ import { ourFileRouter } from "@/app/api/uploadthing/core";
 import "@uploadthing/react/styles.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Link from "next/dist/client/link";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -34,6 +35,7 @@ export default function RootLayout({
         <div className="bg-[#dbdda8]">
           <nav className=" flex items-center  bg-[#669a2f] h-15 rounded-br-[50] ">
             <div className="flex w-1/2  ml-[5%]">
+              <Link href={`/`}>
               <Image
                 src="/images/logo-640-110.svg"
                 priority={true}
@@ -41,7 +43,8 @@ export default function RootLayout({
                 height={110}
                 alt="logo"
                 className="w-60"
-              ></Image>
+              ></Image> 
+              </Link>
             </div>
             <div className="flex w-1/2 justify-end mr-15 ">
               <MdEmail className="text-[#dbdda8] text-4xl " />

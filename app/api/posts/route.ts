@@ -1,26 +1,46 @@
-import prisma from "@/lib/prisma"
-import { NextResponse } from "next/server"
+import prisma from "@/lib/prisma";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   const posts = await prisma.richTextPost.findMany({
     orderBy: { createdAt: "desc" },
-  })
-  return NextResponse.json(posts)
+  });
+  return NextResponse.json(posts);
 }
 
 export async function POST(request: Request) {
-  const { title, content } = await request.json()
-  
+  const {
+    author,
+    content,
+    description,
+    imageUrl,
+    language,
+    mediaLink,
+    section,
+    slug,
+    title,
+  } = await request.json();
+
   if (!title || !content) {
     return NextResponse.json(
-      { error: "Title and content required" },
-      { status: 400 }
-    )
+      { error: "Pleas fill all the required fields" },
+      { status: 400 },
+    );
   }
 
   const post = await prisma.richTextPost.create({
-    data: { title, content },
-  })
+    data: {
+      author,
+      content,
+      description,
+      imageUrl,
+      language,
+      mediaLink,
+      section,
+      slug,
+      title,
+    },
+  });
 
-  return NextResponse.json(post)
+  return NextResponse.json(post);
 }

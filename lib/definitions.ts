@@ -39,9 +39,8 @@ export type User = {
 
 export type PostProps = {
   title: string;
-  image: string;
-  description: string;
-  content: string;
+  image: string | null;
+  description: string | null;  
   slug: string;
 };
 
@@ -62,13 +61,15 @@ export const signupSchema = z.object({
 export type SignupInput = z.infer<typeof signupSchema>;
 
 // CREATE TABLE posts (
-//     id SERIAL PRIMARY KEY,
-//     section VARCHAR(100) NOT NULL,
+//     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,    
 //     title VARCHAR(255) NOT NULL,
+//     description TEXT,
 //     author VARCHAR(150),
-//     content TEXT NOT NULL,
-//     image VARCHAR(150),
-//     slug VARCHAR(255),
+//     section VARCHAR(100) NOT NULL,
+//     langauge VARCHAR(50) NOT NULL,
+//     slug VARCHAR(255) NOT NULL UNIQUE,
+//     image_url VARCHAR(150),
+//     media_link VARCHAR(255),   
 //     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 // );
 
@@ -78,6 +79,13 @@ export type SignupInput = z.infer<typeof signupSchema>;
 
 // CREATE TABLE IF NOT EXISTS users (
 //     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+//     name VARCHAR(255) NOT NULL,
+//     email TEXT NOT NULL UNIQUE,
+//     password TEXT NOT NULL
+// )
+
+// CREATE TABLE IF NOT EXISTS users (
+//     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
 //     name VARCHAR(255) NOT NULL,
 //     email TEXT NOT NULL UNIQUE,
 //     password TEXT NOT NULL

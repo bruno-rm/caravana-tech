@@ -161,7 +161,7 @@ export default function Form() {
               // Do something with the response
               console.log("Files: ", res);
               console.log("presignedUrl: ", res[0].ufsUrl);
-
+ 
               setImageUrl(res[0].ufsUrl);
               setImageName(res[0].name);
 
@@ -179,7 +179,7 @@ export default function Form() {
             </div>
           ) : null}
         </div>
-
+ 
         <div>
           <input type="hidden" name="imageUrl" value={imageUrl} />
         </div>

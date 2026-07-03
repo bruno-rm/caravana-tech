@@ -7,7 +7,7 @@ import { AuthError } from "next-auth";
 import { signIn } from "@/auth";
 import z from "zod";
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require", prepare: false });
+const sql = postgres(process.env.NON_PRISMA_DATABASE!, { ssl: "require", prepare: false });
  
 export async function authenticate(
   prevState: string | undefined,

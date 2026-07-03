@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Posts from "@/components/posts";
+import HomePosts from "@/components/homePosts";
 
 export default function Home() {
   return (
@@ -51,7 +52,10 @@ export default function Home() {
         <Posts />
       </div> */}
 
-      
+      <div>
+        <h2 className="text-3xl pt-10 text-center md:text-5xl md:pb-15 md:pt-15 text-[#382255] font-bold  ">Notícias</h2>
+        <HomePosts />
+      </div>
     </div>
   );
 }

@@ -24,7 +24,7 @@ export default function PostsTable({ title, image, description, slug }: PostProp
   return (
     <>
       <div className=" p-6 w-full">
-        <Link href={`/posts/${slug}`}>
+        <Link href={`/rtposts/${slug}`}>
         <div>
           <div>
             <h2 className="text-2xl text-[#48773a] font-bold mb-3 font-serif">
@@ -33,13 +33,14 @@ export default function PostsTable({ title, image, description, slug }: PostProp
           </div>
 
           <div>
+            {image && (
             <Image
               src={image}
               alt={title}
               width={960}
               height={640}
               className="object-cover"
-            />
+            />)}
           </div>
 
           <div className="mt-2">
