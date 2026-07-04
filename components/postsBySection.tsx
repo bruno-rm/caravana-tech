@@ -11,9 +11,12 @@ import ReadOnlyEditor from "./tiptap-templates/simple/read-only-editor";
  
 export const dynamic = "force-dynamic";
 
-export default async function homePosts() {
+export default async function PostsBySection({ section }: { section: string }) {
   const posts = await prisma.richTextPost.findMany({
     orderBy: { createdAt: "desc" },
+    where: {
+      section
+    },
   });
 
   const extractImagesFromHTML = (htmlContent: string) => {

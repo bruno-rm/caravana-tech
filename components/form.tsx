@@ -31,7 +31,7 @@ export default function Form() {
           placeholder="Insira um título"
         />
       </div>
-
+ 
       <div>
         <label className="block text-sm text-[#48773a] font-semibold mb-1">
           Conteúdo

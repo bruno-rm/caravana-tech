@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Posts from "@/components/posts";
-import HomePosts from "@/components/homePosts";
+// import Posts from "@/components/posts";
+import PostsBySection from "@/components/postsBySection";
 
 export default function Home() {
   return (
@@ -54,7 +54,7 @@ export default function Home() {
 
       <div>
         <h2 className="text-3xl pt-10 text-center md:text-5xl md:pb-15 md:pt-15 text-[#382255] font-bold  ">Notícias</h2>
-        <HomePosts />
+        <PostsBySection section={"notícias"} />
       </div>
     </div>
   );

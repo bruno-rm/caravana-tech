@@ -16,7 +16,7 @@ export async function listPosts(section: string) {
   `;
 console.log(data)
 	return data; 
-}
+} 
  
 
 export async function fetchPostBySlug(slug: string) {

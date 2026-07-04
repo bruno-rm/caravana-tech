@@ -22,7 +22,7 @@ export default function Home() {
   const [saving, setSaving] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(editor?.getHTML());
 
@@ -31,6 +31,8 @@ export default function Home() {
       return;
     }
     setSaving(true);
+
+    const formData = new FormData(e.currentTarget);
 
     try {
       const res = await fetch("api/posts", {
@@ -43,7 +45,7 @@ export default function Home() {
           imageUrl,
           language,
           mediaLink,
-          section,
+          section: formData.get("section"),
           slug,
           title,
         }),
@@ -62,59 +64,70 @@ export default function Home() {
   return (
     <>
       <div className=" max-w-5xl mx-auto p-8">
-        <h1 className="text-3xl font-bold mb-6">Create Post</h1>
+        <h1 className="text-3xl font-bold mb-6">Criar um post</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* <Input
-            placeholder="Post image URL"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-            className="text-lg"
-          /> */}
-
+          
+ 
           <Input
-            placeholder="Post title"
+            placeholder="Título do post"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="text-xl"
           />
 
           <Input
-            placeholder="Nome do autor"
+            placeholder="Autor(a)"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             className="text-xl"
           />
 
           <Input
-            placeholder="Post description"
+            placeholder="Descrição do post para aparecer na página inicial"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             className="text-lg"
           />
+          
+
+          <select
+            defaultValue=""
+            name="language"
+            required
+            className="field-sizing-content w-full border  bg-white border-[#48773a]  p-2 focus:ring-1 focus:ring-[#48773a] focus:outline-none"
+          >
+            <option value="" disabled hidden>
+              O post é em qual idioma? 
+            </option>
+            <option value="pt">Português</option>
+            <option value="en">Inglês</option>
+            <option value="es">Espanhol</option>
+          </select>
+         
+
+          <select
+            defaultValue=""
+            name="section"
+            required
+            className="field-sizing-content w-full border  bg-white border-[#48773a]  p-2 focus:ring-1 focus:ring-[#48773a] focus:outline-none"
+          >
+            <option value="" disabled hidden>
+              Em qual seção o post deve ser publicado?
+            </option>
+            <option value="notícias">Notícias</option>
+            <option value="eventos">Eventos</option>
+            <option value="artigos">Artigos</option>
+          </select>
 
           <Input
-            placeholder="Idioma"
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            className="text-lg"
-          />
-
-          <Input
-            placeholder="Seção"
-            value={section}
-            onChange={(e) => setSection(e.target.value)}
-            className="text-lg"
-          />
-
-          <Input
-            placeholder="Slug"
+            placeholder="Slug do post (ex: nome-do-post)"
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
             className="text-lg"
           />
 
           <Input
-            placeholder="Media link"
+            placeholder="Link para mídia (ex: vídeo do youtube)"
             value={mediaLink}
             onChange={(e) => setMediaLink(e.target.value)}
             className="text-lg"
