@@ -14,7 +14,7 @@ export default async function Posts() {
                 title={item.title}
                 description={item.description}
                 image={item.image_url}
-                content={item.content}
+                // content={item.content}
                 slug={item.slug}
               />
             </div>
