@@ -76,7 +76,7 @@ export default async function PostsBySection({ section }: { section: string }) {
               />
             </div>
           ))
-        ) : (
+        ) : ( 
           <ul>
             <div className="text-center text-red-500 py-6">
               No data available

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 export default async function PostPage({
   params,
@@ -18,6 +19,7 @@ export default async function PostPage({
   });
   if (!post) notFound();
 
+  
   return (
     <div className="max-w-4xl mx-auto p-8">
       <Link href="/rtposts">
@@ -31,7 +33,22 @@ export default async function PostPage({
         <p className="text-sm text-slate-500 mb-8">
           {new Date(post.createdAt).toLocaleDateString()}
         </p>
-        <ReadOnlyEditor content={post.content} />
+
+        <div>
+          {post.mediaLink ? (
+            <div className="px-6">
+              <iframe
+                className="w-full h-120"
+                src={`${post.mediaLink}`}
+                allowFullScreen
+              />
+            </div>
+          ) : (
+            <div></div>
+          )}
+
+          <ReadOnlyEditor content={post.content} />
+        </div>
       </article>
     </div>
   );
