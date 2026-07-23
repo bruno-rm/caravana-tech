@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
-// import { revalidatePath } from "next/dist/server/web/spec-extension/revalidate";
+import { revalidatePath } from "next/dist/server/web/spec-extension/revalidate";
 
 export const dynamic = "force-dynamic";
 
@@ -10,18 +10,18 @@ export default async function PostsPage() {
     orderBy: { createdAt: "desc" },
   });
 
-  // async function deletePost(formData: FormData) {
-  //   "use server";
-  //   const id = formData.get("id") as string;
+  async function deletePost(formData: FormData) {
+    "use server";
+    const id = formData.get("id") as string;
 
-  //   if (!id) return;
+    if (!id) return;
 
-  //   await prisma.richTextPost.delete({
-  //     where: { id },
-  //   });
+    await prisma.richTextPost.delete({
+      where: { id },
+    });
 
-  //   revalidatePath("/rtposts");
-  // }
+    revalidatePath("/rtposts");
+  }
 
   return (
     <div className="w-full md:w-3/5 mx-auto p-8">
@@ -43,13 +43,13 @@ export default async function PostsPage() {
                 </p>
               </div>
             </Link>
-            {/* <form action={deletePost}>
+            <form action={deletePost}>
               <input id="id" name="id" type="hidden" value={post.id} />
               <Button>
                 <p>apagar</p>
               </Button>
-            </form> */}
-          </div>
+            </form>
+          </div> 
         ))}
       </div>
     </div>
