@@ -11,7 +11,7 @@ import { useState } from "react";
 const initialState = {
   message: "",
 };
-
+ 
 export default function Form() {
   const [state, formAction] = useActionState(createPost, initialState);
   const [imageUrl, setImageUrl] = useState<string>("");
